@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const API_URL = "http://localhost:3010/api/alerts";
+
 const AddAlert = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -13,7 +15,7 @@ const AddAlert = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("https://stock-tracker-ruby.vercel.app/api/alerts", {
+      const res = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, symbol, targetPrice }),
@@ -21,7 +23,7 @@ const AddAlert = () => {
 
       if (res.ok) {
         toast.success("Stock alert added successfully!", {
-          autoClose: 2000, // Close after 2 seconds
+          autoClose: 2000, 
           onClose: () => navigate("/"),
         });
       } else {
@@ -29,6 +31,7 @@ const AddAlert = () => {
       }
     } catch (error) {
       toast.error("Error: " + error.message);
+      console.log(error);
     }
   };
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-//const API_URL = "http://localhost:3010/api/alerts";
-const API_URL = "https://stock-tracker-ruby.vercel.app/api/alerts";
+const API_URL = "http://localhost:3010/api/alerts";
+//const API_URL = "https://stock-tracker-ruby.vercel.app/api/alerts";
 
 const Dashboard = () => {
   const navigate = useNavigate();
