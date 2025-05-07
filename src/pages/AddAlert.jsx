@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const API_URL = "http://localhost:3010/api/alerts";
+const API_URL = "https://stock-tracker-backend-ten.vercel.app/api/alerts";
 
 const AddAlert = () => {
   const navigate = useNavigate();
