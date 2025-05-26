@@ -1,10 +1,18 @@
-const API_URL = "http://localhost:3010/api";
+import axios from 'axios';
 
-export const createAlert = async (alertData) => {
-  const res = await fetch(`${API_URL}/alerts`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(alertData),
-  });
-  return res.json();
-};
+// 🔁 Use your deployed backend URL
+const API_BASE_URL = 'https://gatepass-backend.vercel.app';
+
+const API = axios.create({
+  baseURL: `${API_BASE_URL}/api`,
+});
+
+API.interceptors.request.use((req) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    req.headers.Authorization = `Bearer ${token}`;
+  }
+  return req;
+});
+
+export default API;
